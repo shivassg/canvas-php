@@ -1,0 +1,4 @@
+TODO:
+
+1) Create validation for adding new course form: 
+	Check if course ID already exits using ajax

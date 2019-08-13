@@ -1,14 +1,12 @@
 <?php 
 $serverName = "localhost";
-$username = "";
-$password = "shankar083";
-$dbname = "canvas";
-$connection = mysqli_connect($serverName, $username, $password ,$dbname);
+$dBUsername = "root";
+$dBPassword = "shiva123";
+$dBName = "canvas";
+$connection = mysqli_connect($serverName, $dBUsername, $dBPassword , $dBName);
 
 if(!$connection){
-	die("Connection not established");
-}else{
-	echo "Success";
+	die("Connection Failed:".mysqli_connect_error());
 }
 
 ?>

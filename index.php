@@ -15,6 +15,7 @@ if($session!=""){
 	<title> Canvas Application </title>
 	<meta charset="utf-8">
 	<link rel = "shortcuticon" href="">
+	<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -28,7 +29,7 @@ if($session!=""){
 
 		body{
 			background-color: #6f42c1; /*Purple color*/
-			font-family: hehelvetica neue , sans-serif;
+			font-family: Nunito , sans-serif;
 			font-size: 14px;
 		}
 
@@ -68,6 +69,9 @@ if($session!=""){
 			margin-left: -50px;
 			margin-top: 10px;
 		}
+		.logout-message{
+			display: none;
+		}
 
 	</style>
 
@@ -76,6 +80,9 @@ if($session!=""){
 <body>
 
 	<div class = "container">
+
+		<p class="logout-message"> Successfully logged out </p>
+
 		<div class = "card">
 			<div class = "card-img-top text-center">
 				<img src = "images/logo.png" class = "logo"  alt = "Univerity Of Bridgeport">

@@ -20,57 +20,12 @@ if($session!=""){
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/style.css">
 
 	<style>
-		*{
-			margin: 0;
-			padding: 0;
-		}
-
+		
 		body{
 			background-color: #6f42c1; /*Purple color*/
-			font-family: Nunito , sans-serif;
-			font-size: 14px;
-		}
-
-		.card{
-			border-radius: 0;
-			width : 40%;
-			margin:auto;
-			margin-top: 10%;
-			height : 400px;
-
-		}
-
-		.logo{
-			max-width: 200px;
-		}
-
-		.login-title{
-			font-size: 18px;
-		}
-		.invalid-login{
-			color: red;
-			text-align: center;
-			font-size: 14px;
-			display : none;
-		}
-
-		.input-box{
-			margin-left: -20px;
-			margin-bottom: 10px;
-		}
-
-		input {
-			font-size: 14px;
-		}
-
-		.submit-button{
-			margin-left: -50px;
-			margin-top: 10px;
-		}
-		.logout-message{
-			display: none;
 		}
 
 	</style>
@@ -79,7 +34,7 @@ if($session!=""){
 
 <body>
 
-	<div class = "container">
+	<div class = "container login-form">
 
 		<p class="logout-message"> Successfully logged out </p>
 
@@ -91,7 +46,7 @@ if($session!=""){
 
 				<p class ="invalid-login" id="invalid-loign-text"> Invalid Username or Password </p>
 				
-				<p class = "login-title"> Login to University of Bridgeport (Canvas) </p>
+				<p class = "login-title text-center"> Login to University of Bridgeport (Canvas) </p>
 
 				<form action = "login.php" method = "post">
 					<div class = "row">

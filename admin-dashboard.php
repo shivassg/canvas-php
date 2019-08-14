@@ -8,6 +8,9 @@ if (empty($session)) {
 require 'db.php';
 $query = "SELECT DISTINCT department from courses";
 $result = mysqli_query($connection, $query);
+while($row = mysqli_fetch_assoc($result)){
+  $rows[] = $row;
+}
 
 ?>
 
@@ -16,9 +19,6 @@ $result = mysqli_query($connection, $query);
    <head>
       <title> Admin Dashboard </title>
       <meta charset="utf-8">
-      <link rel = "shortcuticon" href="">
-
-
       <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -31,53 +31,21 @@ $result = mysqli_query($connection, $query);
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src ="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-12/css/all.css">
+      <link rel="stylesheet" href="css/style.css">
 
-      <link rel = //cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css>
 
-      <style>
-         *{
-         margin: 0;
-         padding: 0;
-         }
-         body{
-         background-color: white;
-         font-family: Nunito, sans-serif;
-         }
-         .site-head{
-         background-color: #6f42c1; /purple color/
-         }
-         .nav-link{
-         color: #CBBDE2;
-         }
-         .nav-link:hover{
-         color: #FFFFFF;
-         }
-         .navbar-brand{
-         color: #FFFFFF ;
-         }
-         .my-brand{
-         color: #FFFFFF !important;
-         }
-         .footer{
-         position: absolute;
-         margin: auto;
-         bottom: 0;
-         height: 50px;
-         width: 100%;
-         background-color: #F1F1F1
-         }
-
-         .welcome-note{
-            text-align: right;
-         }
-      </style>
+    
    </head>
    <body>
+   
       <nav class = "navbar navbar-expand-sm nav-dark site-head">
+  
          <a class = "navbar-brand my-brand">UB</a>
-         <ul class = "navbar-nav">
-            <li class="nav-item active"  >
-               <a class = "nav-link" href="#"> Dashboard </a>
+
+         <ul class = "navbar-nav  navbarlist">
+            <li class="nav-item " >
+               <a class = "nav-link active" href="#"> Dashboard </a>
             </li>
 
             <li class = "nav-item">
@@ -91,21 +59,21 @@ $result = mysqli_query($connection, $query);
             </li>
          </ul>
       </nav>
-
+      
       <div class = "container">
-
-        <div class ="row text-center">
+      
+        <div class ="row text-center add-buttons">
          <div class = "col-md-4">
           <button type ="button"
-          class ="btn btn-info btn-sm" data-toggle="modal" data-target=".new-course"> Add new course </button>
+          class ="btn btn-info btn-sm" data-toggle="modal" data-target=".new-course"><i class="fas fa-book"></i> Add new course </button>
           </div>
          <div class = "col-md-4">
         <button type ="button"
-          class ="btn btn-info btn-sm" data-toggle="modal" data-target=".new-student"> Add student </button>
+          class ="btn btn-info btn-sm" data-toggle="modal" data-target=".new-student"><i class="fas fa-user-graduate"></i> Add student </button>
         </div>
         <div class = "col-md-4">
         <button type ="button"
-          class ="btn btn-info btn-sm" data-toggle="modal" data-target="#new-professor"> Add Professor </button>
+          class ="btn btn-info btn-sm" data-toggle="modal" data-target="#new-professor"><i class="fas fa-user"></i> Add Professor </button>
        </div>
      </div>
 
@@ -138,10 +106,10 @@ $result = mysqli_query($connection, $query);
       <!--Add Course Modal -->
 
       <div class="modal new-course" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
           <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title text-left">New Course</h5>
+            <div class="modal-header bg-info">
+               <h5 class="modal-title text-left text-white">New Course</h5>
         <button type="button" class="close text-right" data-dismiss="modal">&times;</button>
       </div>
 
@@ -212,26 +180,27 @@ $result = mysqli_query($connection, $query);
       <!-- Adding student modal -->
 
       <div class="modal new-student" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
           <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title text-left">Add Student to Course</h5>
+            <div class="modal-header bg-info">
+               <h5 class="modal-title text-left text-white">Add Student to Course</h5>
         <button type="button" class="close text-right" data-dismiss="modal">&times;</button>
       </div>
 
             <div class= "container ">
-            <form class="form-horizontal" action='newcourse.php' method="POST">
+            <form class="form-horizontal" action='addcourse-student.php' method="POST">
 
     <div class = "control-group">
       <label> Department </label>
       <div class = "controls">
-       <select name = "department-selection" id="department-selection" onselect = "loadCourseid()">
+       <select name = "department_selection" id="department-selection">
         <option selected disabled > Select Department </option>
           <?php
-while ($row = mysqli_fetch_assoc($result)) {
-  echo '<option value="' . $row['department'] . '">' . $row['department'] . '</option>';
-}
-?>
+
+              foreach ($rows as $key => $value) {
+              echo '<option value="' . $value['department'] . '">' . $value['department'] . '</option>';
+              }
+          ?>
        </select>
       </div>
 
@@ -240,22 +209,23 @@ while ($row = mysqli_fetch_assoc($result)) {
      <div class="control-group">
       <label>CourseID</label>
       <div class="controls">
-        <input type="text" id = "courseid-student-text" name = "courseid-student-text">
+        <select name= "course_id" id = "course_id">
+          <option selected disabled> Select Course ID </option>
+        </select>
       </div>
     </div>
 
     <div class="control-group">
       <label class="control-label" >Student ID</label>
       <div class="controls">
-        <input type="text" id="coursename" name="coursename" placeholder="" class="input-xlarge" required>
-        <!-- <p class="help-block">Please provide your E-mail</p> -->
+        <input type="text" id="student_id" name="student_id" placeholder="" class="input-xlarge" required>
       </div>
     </div>
 
     <div class="control-group">
       <label class="control-label" >Term</label>
       <div class="controls">
-        <input type="text" id="courselevel" name="courselevel" placeholder="" class="input-xlarge" required>
+        <input type="text" id="student_term" name="student_term" placeholder="" class="input-xlarge" required>
         <!-- <p class="help-block">Password should be at least 4 characters</p> -->
       </div>
     </div>
@@ -273,18 +243,19 @@ while ($row = mysqli_fetch_assoc($result)) {
           </div>
         </div>
       </div>
+<!-- Adding student modal ends -->
     
 
-<!--Add Professor Modal ends-->
+<!--Add Professor Modal-->
 
       <div class = "modal new-professor" id = "new-professor">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
           <div class= "modal-content">
 
 
             <!--Modal Header-->
-            <div class="modal-header">
-                  <h5 class="modal-title text-left">Add Professor to Course</h5>
+            <div class="modal-header bg-info">
+                  <h5 class="modal-title text-left text-white">Add Professor to Course</h5>
                   <button type="button" class="close text-right" data-dismiss="modal">&times;</button>
             </div> 
 
@@ -294,15 +265,26 @@ while ($row = mysqli_fetch_assoc($result)) {
                      <div class = "control-group">
                         <label> Department </label>
                         <div class = "controls">
-                          <input type = "text" id = "prof-department-text" name = " professordept">
+                          <select name = "professor_department" id = "professor_department">
+                            <option selected disabled > Select Department </option>
+                             <?php
+                             foreach ($rows as $key => $value) {
+                              echo '<option value="' . $value['department'] . '">' . $value['department'] . '</option>';
+                                 }
+                             ?>
+                          </select>
                         </div>
                      </div>
+
                      <div class="control-group">
                         <label>CourseID</label>
                         <div class="controls">
-                        <input type = "text" id = "courseid-professor-text" name = "courseid_professor">
+                        <select name= "courseid_professor" id="course_id_professor">
+                        <option selected disabled> Select Course ID </option>
+                        </select>
                         </div>
                      </div>
+
                      <div class="control-group">
                         <label class="control-label" >Professor UB ID</label>
                         <div class="controls">
@@ -326,9 +308,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 
           </div> <!--modal content-->
         </div> <!--Modal Dialog-->
-      </div> <!--Moda-->
+      </div> <!--Modal-->
       
-
+<!--Add Professor modal ends-->
 
 
 <script type = "text/javascript" >
@@ -373,10 +355,7 @@ $('#course-table').empty();
 
 
 }
-//To load course ids based on department selection in the add new student to the course form
-function loadCourseid(){
-  var selectedDepartment = document.getElementById("department-selection").value;
-}
+
 
 function viewCourses() {
     $('#course-table').show();
@@ -482,8 +461,7 @@ $(document).ready(function() {
 
 });
 
-
-// CorseID selection based on department
+ // CourseID selection based on department in "Add student to course form"
  $('#department-selection').on('change', function(){
         var department = $(this).val();
         if(department){
@@ -491,14 +469,41 @@ $(document).ready(function() {
                 type:'POST',
                 url:'selectcourseid.php',
                 data:'department='+department,
-                success:function(html){
-                  //alert(html);
+                success:function(myData){
+                  //alert(myData);
+                  $.each(JSON.parse(myData), function (key, value) {
+     $('#course_id').append($('<option></option>').attr('value', value.CourseID).text(value.CourseID));
+
+  })
 
                 }
             });
         }else{
-            $('#state').html('<option value="">Select country first</option>');
-            $('#city').html('<option value="">Select state first</option>');
+          
+        }
+    });
+
+
+ //Course ID selection based on department in "Add professor to course form"
+
+ $('#professor_department').on('change', function(){
+        var department = $(this).val();
+        if(department){
+            $.ajax({
+                type:'POST',
+                url:'selectcourseid.php',
+                data:'department='+department,
+                success:function(myData){
+                  //alert(myData);
+                  $.each(JSON.parse(myData), function (key, value) {
+     $('#course_id_professor').append($('<option></option>').attr('value', value.CourseID).text(value.CourseID));
+
+  })
+
+                }
+            });
+        }else{
+          
         }
     });
 

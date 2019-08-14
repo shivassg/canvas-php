@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    }
+    body{
+    background-color: white;
+    font-family: Nunito, sans-serif;
+    font-size: 14px;
+    }
+    .site-head{
+    background-color: #6f42c1; /purple color/
+    }
+    .nav-link{
+    color: #CBBDE2;
+    }
+    .nav-link:hover{
+    color: #FFFFFF;
+    }
+    .navbar-brand{
+    color: #FFFFFF ;
+    }
+    .my-brand{
+    color: #FFFFFF !important;
+    }
+    .footer{
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #F1F1F1
+    }
+
+    .welcome-note{
+       text-align: right;
+    }
+    .add-buttons{
+      margin-top: 10px;
+
+    }
+
+    .login-form .card{
+        border-radius: 0;
+        width : 40%;
+        margin:auto;
+        margin-top: 10%;
+        height : 325px;
+
+    }
+
+    .logo{
+        max-width: 200px;
+    }
+
+    .login-title{
+        font-size: 18px;
+    }
+    .invalid-login{
+        color: red;
+        text-align: center;
+        font-size: 14px;
+        display : none;
+    }
+
+    .input-box{
+        margin-left: -20px;
+        margin-bottom: 10px;
+    }
+
+    .login-form input {
+        font-size: 14px;
+    }
+
+    .submit-button{
+        margin-left: -50px;
+        margin-top: 10px;
+    }
+    .logout-message{
+        display: none;
+    }
+
+    .login-form form{
+        margin-top: 40px;
+    }
+
+    .navbarlist{
+        position: absolute;
+        right: 20px;
+    }
+
+    .navbarlist .active{
+        color: #FFFFFF !important;
+    }

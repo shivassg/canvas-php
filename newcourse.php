@@ -8,7 +8,9 @@ require 'db.php';
 $sql = mysqli_query($connection, "INSERT INTO courses VALUES ($courseid, '$coursename', '$courselevel' , $credits, '$department')");
 
 if($sql){
-	echo "Success";
+	header('location:success.php');
+}else{
+	echo "Failed"; //Need to Hanlde to error messages
 }
 
 ?>

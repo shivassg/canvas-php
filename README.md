@@ -7,6 +7,8 @@ Login Window
 
 Admin Dashboard
 
+The table in the admin dashboard is designed using Data table library and the values are populated in the table using AJAX.
+
 ![admin-dashboard](https://github.com/shivassg/canvas-php/blob/master/screenshots/admin-dashboard.png)
 
 

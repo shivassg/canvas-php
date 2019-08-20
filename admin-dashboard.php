@@ -51,12 +51,16 @@ while($row = mysqli_fetch_assoc($result)){
             <li class = "nav-item">
                <a class = "nav-link" href="contact.html"> Inbox </a>
             </li>
-            <li class = "nav-item">
-               <a class = "nav-link" href="contact.html"> Profile </a>
+            <li class = "nav-item dropdown">
+               <a class = "nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Profile </a>
+               <div class="dropdown-menu dropdown-menu-right" aira-labelledby="profileDropdown">
+                  <a class="dropdown-item" href="#"> About Me </a>
+                  <a class="dropdown-item" href="logout.php"> Logout </a>
+                </div>
             </li>
-            <li class = "nav-item " >
+            <!-- <li class = "nav-item " >
                <a class = "nav-link" href = "logout.php"> Log out </a>
-            </li>
+            </li> -->
          </ul>
       </nav>
       
@@ -288,7 +292,11 @@ while($row = mysqli_fetch_assoc($result)){
                      <div class="control-group">
                         <label class="control-label" >Professor UB ID</label>
                         <div class="controls">
-                           <input type="text" id="professor-ubid" name="professorid" placeholder="" class="input-xlarge" required>
+                          <input type="text" id="professor-ubid" name="professorid" autocomplete="off" list="professorlist" class="input-xlarge" required>
+                                <datalist id="professorlist">
+                                  <option> 101 </option>
+                                  <option> 102 </option>
+                                </datalist>
                            <!-- <p class="help-block">Please provide your E-mail</p> -->
                         </div>
                      </div>

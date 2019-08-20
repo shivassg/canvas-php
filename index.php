@@ -20,12 +20,22 @@ if($session!=""){
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-12/css/all.css">
 	<link rel="stylesheet" href="css/style.css">
 
 	<style>
 		
 		body{
 			background-color: #6f42c1; /*Purple color*/
+		}
+
+		.field-icon {
+  			position: absolute;
+			top: calc(50% - 0.5em);
+ 			z-index: 2;
+		}
+		.input-wrapper{
+			position: relative;
 		}
 
 	</style>
@@ -55,7 +65,9 @@ if($session!=""){
 					</div>
 					<div class = "row">
 						<div class = "col-md-6 text-center"> Password </div>
-						<div class = "col-md-6 text-left input-box"><input type = "password" placeholder = "Enter the password" id ="password" name = "password" required></div>
+						<div class = "col-md-6 text-left input-box">
+							<input type = "password" placeholder = "Enter the password" id ="password" name = "password" required>
+						</div>
 					</div>
 
 					<div class = "row">

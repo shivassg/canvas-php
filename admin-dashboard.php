@@ -410,31 +410,9 @@ $(document).ready(function() {
 
     // $('#student-table').hide();
 
-    // Edit record
-    $('#course-table').on('click', 'a.editor_edit', function(e) {
-        e.preventDefault();
-
-        editor.edit($(this).closest('tr'), {
-            title: 'Edit record',
-            buttons: 'Update'
-        });
-    });
-
-    // Delete a record
-    $('#course-table').on('click', 'a.editor_remove', function(e) {
-        e.preventDefault();
-
-        editor.remove($(this).closest('tr'), {
-            title: 'Delete record',
-            message: 'Are you sure you wish to remove this record?',
-            buttons: 'Delete'
-        });
-    });
-
-
     //View course table in admin dashboard
-    $("#course-table").DataTable({
-
+    var table =$("#course-table").DataTable({
+        select: true,
         "scrollY":        "400px",
         "scrollCollapse": true,
         "paging":         false,
@@ -464,6 +442,34 @@ $(document).ready(function() {
                 defaultContent: '<a href="" class="editor_edit">Edit</a> / <a href="" class="editor_remove">Delete</a>'
             }
         ]
+    });
+
+    /*Edit the course functionality of course view section of Datatable */
+    $('#course-table').on('click', 'a.editor_edit', function(e){
+      
+    });
+
+
+    /*Delete the course from Course View Section of Datatable */
+
+    $('#course-table').on('click', 'a.editor_remove', function(e) {
+        e.preventDefault();
+        debugger;
+        selectRow = table.rows( { selected: true } );
+        var CourseID = selectRow.data()[0][0];
+        if(confirm("Are you suer you want to remove course ID: "+ CourseID)) {
+          $.ajax({
+            url:"delete_course.php",
+            method:"POST",
+            data:{CourseID:CourseID},
+            success:function(data) {
+              $('#alert').html('<div class="alert alert-success">'+data+'</div>');
+              //$(this).DataTable().destroy();
+             // selectRow.remove().draw();
+             viewCourses();
+            }
+          })
+        }
     });
 
 
@@ -514,6 +520,9 @@ $(document).ready(function() {
           
         }
     });
+
+
+ 
 
 
 </script>

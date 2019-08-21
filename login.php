@@ -28,10 +28,7 @@ else{ #Successfull login
 	}
 	else{
 		echo "Invalid username and password";
+		session_unset();
 	}
 }
-
-
-
-
 }

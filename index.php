@@ -29,15 +29,14 @@ if($session!=""){
 			background-color: #6f42c1; /*Purple color*/
 		}
 
-		.field-icon {
-  			position: absolute;
-			top: calc(50% - 0.5em);
- 			z-index: 2;
-		}
-		.input-wrapper{
-			position: relative;
-		}
+		.field-icon{
+			position: absolute;
+			font-size: 12px;
+			margin-top: 7px;
+			margin-left: -20px;
+			opacity: 0.7;
 
+		}
 	</style>
 
 </head>
@@ -61,15 +60,15 @@ if($session!=""){
 				<form action = "login.php" method = "post">
 					<div class = "row">
 						<div class = "col-md-6 text-center"> Username </div>
-						<div class = "col-md-6 text-left input-box"> <input type ="text" id = "username" placeholder="Enter the UB ID" name = "username" required></div>
+						<div class = "col-md-6 text-left input-box"> <input type ="text" id = "username" placeholder="Enter UB ID" name = "username" required></div>
 					</div>
 					<div class = "row">
 						<div class = "col-md-6 text-center"> Password </div>
 						<div class = "col-md-6 text-left input-box">
-							<input type = "password" placeholder = "Enter the password" id ="password" name = "password" required>
+							<input type = "password" placeholder = "Enter password" id ="password" name = "password" required>
+							<span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 						</div>
 					</div>
-
 					<div class = "row">
 						<div class = "col-md-12 text-right submit-button"> <input  type = "submit"  name = "login-submit"  class = "btn btn-sm btn-primary" > </div>
 					</div>
@@ -95,10 +94,19 @@ if($session!=""){
 			return false;
 		}
 	}
-	
+
+$(".toggle-password").click(function() {
+
+$(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+
 </script>
-
-
 
 </body>
 </html>

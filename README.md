@@ -31,6 +31,15 @@ Student List
 
 ![student-list](https://github.com/shivassg/canvas-php/blob/master/screenshots/students.png)
 
+## Release on 20-August-2019:
+
+Following changes were commited in this release. 
+
+* Added Password visibility option in the login page
+* Fixed a session bug in the login page. 
+* Logout is now added in the profile dropdown
+* Added delete course functionality in admin dashboard course datatable
+
 
 
 

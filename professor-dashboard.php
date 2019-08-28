@@ -12,7 +12,44 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-12/css/all.css">
     <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+        .sociallink a {
+        color: #4C5860;
+        margin-left: 15px;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    .footer-text {
+        color: #4C5860;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    .header-bar{
+        border-bottom: 1px solid #C7CDD1;
+        background-color: #fff;
+        min-height: 33px;
+        padding-bottom: 12px;
+    }
+
+    .hasMarginTop{
+        margin-top: 24px;
+    }
+
+    body{
+        background-color: white;
+        font-family: Nunito, sans-serif;
+        font-size: 14px;
+    }
+
+
+
+    </style>
 </head>
+
 
 <body>
     <!--Nav bar-->
@@ -36,15 +73,37 @@
     </nav>
 
     <div class = "container">
-        
-        <table class="professorcourse" id="professorcourse" sytle="width:100%" cellspacing="0">
-            <thead>
-                <th> Course ID </th>
-                <th> Term  </th>
-                <th> Department </th>
-                <!--TODO: Can Add number of students column here-->
-        </table>
+        <div class="header-bar">
+            <h2> All Courses </h2>
+        </div>
+
+        <div class="professor-table hasMarginTop">
+            <table class="professorcourse" id="professorcourse" sytle="width:100%" cellspacing="0">
+                <thead>
+                    <th> Course ID </th>
+                    <th> Course Name  </th>
+                    <th> Course Level </th>
+                    <th> Department </th>
+                </thead>
+                    <!-- <th> Enrolled as </th> -->
+                    <!--TODO: Can Add number of students column here-->
+            </table>
+        </div>
     </div>
+
+    <!-- <footer class="footer">
+        <div class="container">
+            <div id="footer-links" class="d-flex canvas-footer-links"> <span class="footer-text">Sample website Developed By Shiva Shankar Ganesan</span>
+                    <span class="sociallink">
+                        <a href="https://www.facebook.com/shivashankarganesan94"> Facebook</a>
+                        <a href="https://twitter.com/gshiva_shankar"> Twitter</a>
+                        <a href="https://www.linkedin.com/in/shivashankarganesan/"> LinkedIn </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
 
     <script type ="text/javascript">
 
@@ -59,15 +118,20 @@
             "dataSrc": ""
 
         },
+
+        
         
         "columnes" : [{
-            "data": "cousreid"
+            "data": "courseid"
         },
         {
-            "data": "term"
+            "data": "coursename"
         },
         {
-            "data": "dept"
+            "data": "courselevel"
+        },
+        {
+            "data": "department"
         }
         ]
     });

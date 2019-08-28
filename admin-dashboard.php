@@ -334,8 +334,9 @@ function viewStudent() {
 $('#course-table').DataTable().destroy();
 $('#course-table').empty();
     //View students in the course in the admin dashboard
-     $("#student-table").DataTable({
 
+     var studentTable = $("#student-table").DataTable({
+        select:true,
         "scrollY":        "400px",
         "scrollCollapse": true,
         "paging":         false,
@@ -411,7 +412,7 @@ $(document).ready(function() {
     // $('#student-table').hide();
 
     //View course table in admin dashboard
-    var table =$("#course-table").DataTable({
+    var courseTable =$("#course-table").DataTable({
         select: true,
         "scrollY":        "400px",
         "scrollCollapse": true,
@@ -454,8 +455,9 @@ $(document).ready(function() {
 
     $('#course-table').on('click', 'a.editor_remove', function(e) {
         e.preventDefault();
-        debugger;
-        selectRow = table.rows( { selected: true } );
+        //debugger;
+        var rowData = courseTable.row( this ).data();
+        selectRow = courseTable.rows( { selected: true } );
         var CourseID = selectRow.data()[0][0];
         if(confirm("Are you suer you want to remove course ID: "+ CourseID)) {
           $.ajax({
@@ -470,6 +472,16 @@ $(document).ready(function() {
             }
           })
         }
+    });
+
+
+    /*Delete the student from course in student view section of datatable */
+
+    $('#student-table').on('click', 'a.editor_remove', function(e){
+      e.preventDefault();
+      selectRow = studentTable.rows( { selected: true } );
+      var CourseID = selectRow.data()[0][0];
+      var studentID = selectRow.data()[0][1];
     });
 
 
@@ -520,9 +532,6 @@ $(document).ready(function() {
           
         }
     });
-
-
- 
 
 
 </script>

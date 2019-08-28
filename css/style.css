@@ -22,14 +22,7 @@
     .my-brand{
     color: #FFFFFF !important;
     }
-    .footer{
-    position: absolute;
-    margin: auto;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-    background-color: #F1F1F1
-    }
+    
 
     .welcome-note{
        text-align: right;
